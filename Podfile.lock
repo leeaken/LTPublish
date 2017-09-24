@@ -1,0 +1,29 @@
+PODS:
+  - DACircularProgress (2.3.1)
+  - Masonry (1.0.2)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+
+DEPENDENCIES:
+  - DACircularProgress (~> 2.3.1)
+  - Masonry (= 1.0.2)
+  - ReactiveCocoa (= 2.5)
+  - SDWebImage (~> 4.0.0)
+
+SPEC CHECKSUMS:
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+
+PODFILE CHECKSUM: 7d2dec26a84ce54cad1acb42759ca50d23cbac0c
+
+COCOAPODS: 1.3.0.beta.2
