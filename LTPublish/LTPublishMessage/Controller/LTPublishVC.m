@@ -36,6 +36,11 @@
 
 @property (nonatomic, strong) NSMutableArray *fileUrls;
 
+// 发布按钮
+@property (nonatomic, strong) UIButton *navBarRightBtn;
+@property (nonatomic, strong) UIBarButtonItem *rightBarItem;
+@property (nonatomic,assign) BOOL navBarRightBtnEnabled;
+
 @end
 
 @implementation LTPublishVC
@@ -66,6 +71,7 @@
     [self.topView addSubview:self.lineTopForTopView];
     [self.topView addSubview:self.lineBottomForTopView];
 
+    self.navigationItem.rightBarButtonItem = self.rightBarItem;
 }
 
 - (void)addViewConstraints {
@@ -110,8 +116,21 @@
         return @([value boolValue]);
     }];
 
+    RAC(self,navBarRightBtnEnabled) = self.viewModel.enableSubmitSignal;
 }
 
+#pragma mark - 按钮事件
+
+- (void)navBarRightBtnAction:(id)sender {
+    
+    NSLog(@"发布");
+}
+
+- (void)setNavBarRightBtnEnabled:(BOOL)enabled {
+    
+    self.rightBarItem.enabled = enabled;
+    self.navBarRightBtn.enabled = enabled;
+}
 
 #pragma mark - LTAddPhotoViewDelegate
 
@@ -295,6 +314,32 @@
     }
     
     return _fileUrls;
+}
+
+- (UIBarButtonItem *)rightBarItem {
+    
+    if (!_rightBarItem) {
+        
+        _rightBarItem = [[UIBarButtonItem alloc] initWithCustomView:self.navBarRightBtn];
+    }
+    
+    return _rightBarItem;
+}
+
+- (UIButton *)navBarRightBtn {
+    
+    if (!_navBarRightBtn) {
+        _navBarRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _navBarRightBtn.frame = CGRectMake(0, 0, 80, 40);
+        _navBarRightBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        _navBarRightBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
+        [_navBarRightBtn setTitle:@"发布" forState:UIControlStateNormal];
+        [_navBarRightBtn setTitleColor:[UIColor colorWithRed:59.0/255.0 green:196.0/255.0 blue:5.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+        [_navBarRightBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+        [_navBarRightBtn addTarget:self action:@selector(navBarRightBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _navBarRightBtn;
 }
 
 @end
